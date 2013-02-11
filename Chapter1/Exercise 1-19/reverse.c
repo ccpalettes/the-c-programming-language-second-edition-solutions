@@ -13,10 +13,9 @@ void reverse(char s[]);
 
 int main(void)
 {
-    int len; /* current line length */
     char line[MAXLINE]; /* current input line */
 
-    while ((len = get_line(line, MAXLINE)) > 0) {
+    while (get_line(line, MAXLINE) > 0) {
         reverse(line);
         printf("%s\n", line);
     }
