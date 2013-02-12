@@ -36,7 +36,7 @@ int get_line(char s[], int lim)
 
     for (i = 0, l = 0; (c = getchar()) != EOF && c != '\n'; ++i)
         if (i < lim - 1)
-          s[l++] = c;
+            s[l++] = c;
     s[l] = '\0';
 
     return l;
