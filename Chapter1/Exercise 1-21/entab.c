@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
-#define TAB_WIDTH 4
+#define TAB_WIDTH 8
 
 int getchars(char s[], int maxline);
 void entab(char s1[], char s2[], int tabwidth);

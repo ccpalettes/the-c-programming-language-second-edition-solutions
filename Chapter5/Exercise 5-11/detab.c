@@ -5,7 +5,7 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h> /* for atof() */
+#include <stdlib.h> /* for atoi() */
 
 #define MAXLINE 1000
 #define DEFAULTTABWIDTH 4
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
         argc = MAXTABSTOPS;
     j = 0;
     for (i = 2; i <= argc; ++i) {
-        tab = atof(*++argv);
+        tab = atoi(*++argv);
         if (tab > 0)
             w[j++] = tab;
     }

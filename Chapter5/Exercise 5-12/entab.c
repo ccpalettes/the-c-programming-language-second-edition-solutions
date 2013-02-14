@@ -1,46 +1,47 @@
 /**
  * Author: Jeremy Yu <ccpalettes@gmail.com>
  * 
- * Solution for Exercise 5-11, Chapter5.
+ * Solution for Exercise 5-12, Chapter5.
  */
 
 #include <stdio.h>
 #include <stdlib.h> /* for atoi() */
 
 #define MAXLINE 1000
+#define DEFAULTSTARTCOL 1
 #define DEFAULTTABWIDTH 8
-#define MAXTABSTOPS 10
 
 int getchars(char *s, int max);
-void entab(char *s1, char *s2, int tabwidth[]);
+void entab(char *s1, char *s2, int startcol, int tabwidth);
 
 int main(int argc, char **argv)
 {
     char s1[MAXLINE];
     char s2[MAXLINE];
 
-    int w[MAXTABSTOPS + 1];
-    int i, tab, j;
+    int m, n, m2, n2;
 
-    if (argc > MAXTABSTOPS)
-        argc = MAXTABSTOPS;
-    j = 0;
-    for (i = 2; i <= argc; ++i) {
-        tab = atoi(*++argv);
-        if (tab > 0)
-            w[j++] = tab;
+    m = DEFAULTSTARTCOL;
+    n = DEFAULTTABWIDTH;
+
+    while (--argc > 0) {
+        argv++;
+        if (**argv == '-') {
+            if ((m2 = atoi(++*argv)) > 0)
+                m = m2;
+        } else if (**argv == '+') {
+            if ((n2 = atoi(++*argv)) > 0)
+                n = n2;
+        }
     }
-    if (i == 2)
-        w[j++] = DEFAULTTABWIDTH;
-    w[j] = 0;
-
-    printf("Usage example: entab 2 4 6\n");
+    
+    printf("Usage example: entab -2 +8\n");
 
     printf("Input some characters, then press enter:\n");
     while (getchars(s1, MAXLINE) == 0)
         ;
 
-    entab(s1, s2, w);
+    entab(s1, s2, m, n);
     printf("entab result:\n%s\n", s2);
 
     return 0;
@@ -60,21 +61,16 @@ int getchars(char *s, int max)
     return l;
 }
 
-// copy characters in s1 to s2 and replace blanks with tabs
-void entab(char *s1, char *s2, int w[])
+void entab(char *s1, char *s2, int col, int w)
 {
-    int i, j, c, blanks, k;
+    int i, j, c, blanks;
     int blanksenough;
 
     i = 0;
-    k = 0;
     while ((c = *s1) != '\0') {
-        if (c == ' ') {
+        if (c == ' ' && i >= col - 1) {
             blanksenough = 1;
-            if (w[k] == 0)
-                k = 0;
-            blanks = w[k] - i % w[k];
-            k++;
+            blanks = w - i % w;
             for (j = 1; j < blanks; ++j){
                 if (*(s1 + j) != ' ') {
                     blanksenough = 0;
@@ -90,6 +86,10 @@ void entab(char *s1, char *s2, int w[])
                 i++;
                 ++s1;
             }
+        } else if (c == '\t') {
+            *s2++ = c;
+            i += w - i % w;
+            ++s1;
         } else {
             *s2++ = c;
             i++;
