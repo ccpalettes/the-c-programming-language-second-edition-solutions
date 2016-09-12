@@ -4,26 +4,20 @@
  * Solution for Exercise 2-02, Chapter2.
  */
 
+
 #include <stdio.h>
-
-#define MAXLINE 1000
-
-int main(void)
-{
-    char line[MAXLINE];
-    int c, i;
-
-    i = 0;
-    while (i < MAXLINE - 1) {
-    if ((c=getchar()) == EOF)
-        break;
-    line[i++] = c;
-    if (c == '\n')
-        break;
+ 
+#define LIMIT 1000
+ 
+int main(void) {
+    int i;
+    int c, lim;
+    char s[LIMIT];
+    lim = LIMIT;
+ 
+    for (i = 0; (i < lim-1) & ((c=getchar()) != '\n') & (c != EOF); ++i) {
+        s[i] = c;
     }
-    line[i] = '\0';
-
-    printf("%s\n", line);
-
-    return 0;
+    s[i] = '\0';
+    printf("%s\n", s);
 }
