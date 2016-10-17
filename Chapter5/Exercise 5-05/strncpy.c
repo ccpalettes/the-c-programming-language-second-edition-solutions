@@ -11,8 +11,8 @@ int getchars(char *s, int max);
 
 int main(void)
 {
-    char *t = "testring1234";
-    char *s;
+    char t[] = "testring1234";
+    char s[] = "";
 
     _strncpy(s, t, 8);
     printf("strncpy: %s\n", s);
@@ -22,7 +22,7 @@ int main(void)
 
 void _strncpy(char *s, char *t, int n)
 {
-    while (n-- > 0 && (*s++ = *t++))
+    while ((n--) > 0 && (*s++ = *t++))
         ;
     *s = '\0';
 }
