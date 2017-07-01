@@ -8,20 +8,15 @@
 
 int main(void)
 {
-    int c, linestarted;
-
-    linestarted = 0;
+    int c;
+    
     printf("Input some characters, then press Ctrl+D.\n");
     while ((c = getchar()) != EOF)
         if (c == ' ' || c == '\t' || c == '\n') {
-            if (!linestarted) {
-                putchar('\n');
-                linestarted = 1;
-            }
+            putchar('\n');
         } else {
-            putchar(c);
-            linestarted = 0;
+            putchar(c);    
         }
-
+    
     return 0;
 }
