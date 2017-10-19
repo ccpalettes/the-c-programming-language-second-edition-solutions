@@ -1,5 +1,4 @@
 /**
- * Author: Jeremy Yu <ccpalettes@gmail.com>
  * 
  * Solution for Exercise 4-13, Chapter4.
  */
@@ -32,14 +31,13 @@ void reverse(char s[])
 
 void reverse_r(char s[], int i, int j)
 {
-    int tmp;
+  int temp = s[i];
 
-    tmp = s[i];
-    s[i] = s[j];
-    s[j] = tmp;
-
-    if (i < j)
-        reverse_r(s, ++i, --j);
+  if (i<j)
+    reverse_r(s, i+1, j);
+  s[j-i] = temp;
+  if (i==0)
+    s[j+1] = '\0';
 }
 
 int getchars(char s[], int max)
