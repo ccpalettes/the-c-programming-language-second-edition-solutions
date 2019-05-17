@@ -54,8 +54,9 @@ void squeeze(char s1[], char s2[])
         while (s1[j] != '\0') {
             if (s1[j] == s2[i]) {
                 k = j;
-                while ((s1[k] = s1[++k]) != '\0')
-                    ;
+                while ((s1[k] = s1[k + 1]) != '\0'){
+                    ++k;
+                }
             } else
                 ++j;
         }
