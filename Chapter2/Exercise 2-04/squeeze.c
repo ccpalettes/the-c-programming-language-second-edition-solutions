@@ -46,19 +46,15 @@ int get_line(char s[], int lim)
 /* This implementation is a bit more complicated*/
 void squeeze(char s1[], char s2[])
 {
-    int i, j, k;
+    int i;
+    int j;
+    int k;
 
-    i = 0;
-    while (s2[i] != '\0') {
-        j = 0;
-        while (s1[j] != '\0') {
-            if (s1[j] == s2[i]) {
-                k = j;
-                while ((s1[k] = s1[++k]) != '\0')
-                    ;
-            } else
-                ++j;
-        }
-        ++i;
+    for (k = 0; s2[k] != '\0'; ++k) {
+        for (i = j = 0; s1[i] != '\0'; i++)
+            if (s1[i] != s2[k])
+                s1[j++] = s1[i];
+
+        s1[j] = '\0';
     }
 }
