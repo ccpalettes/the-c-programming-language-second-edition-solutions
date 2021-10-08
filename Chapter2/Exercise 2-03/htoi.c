@@ -52,9 +52,9 @@ unsigned long htoi(char s[])
     if (c >= '0' && c <= '9')
         n += c - '0';
     else if (c >= 'a' && c <= 'f')
-        n += c - 'a';
+        n += c - 'a' + 10;
     else if (c >= 'A' && c <= 'F')
-        n += c - 'A';
+        n += c - 'A' + 10;
     }
 
     return n;
