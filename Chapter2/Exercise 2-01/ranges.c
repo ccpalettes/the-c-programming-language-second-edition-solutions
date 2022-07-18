@@ -1,6 +1,4 @@
 /**
- * Author: Jeremy Yu <ccpalettes@gmail.com>
- * 
  * Solution for Exercise 2-01, Chapter2.
  */
 

@@ -1,6 +1,4 @@
 /**
- * Author: Jeremy Yu <ccpalettes@gmail.com>
- * 
  * Solution for Exercise 4-08, Chapter4.
  */
 
