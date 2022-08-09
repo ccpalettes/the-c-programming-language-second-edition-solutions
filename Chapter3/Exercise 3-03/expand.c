@@ -47,9 +47,9 @@ void expand(char s1[], char s2[])
             ('A' <= s1[i] && s1[i] <= 'Z' && s1[i] <= c && c <= 'Z') ||
             ('0' <= s1[i] && s1[i] <= '9' && s1[i] <= c && c <= '9'))) {
                 k = 0;
-                while (k <= c - s1[i])
+                while (k < c - s1[i])
                     s2[j++] = s1[i] + k++;
-                i += 2;
+                i++;
         } else {
             s2[j++] = s1[i];
         }
