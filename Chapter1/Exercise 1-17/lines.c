@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
-#define MAXLENGTH 10
+#define MAXLENGTH 80
 
 int get_line(char line[], int maxline);
 
