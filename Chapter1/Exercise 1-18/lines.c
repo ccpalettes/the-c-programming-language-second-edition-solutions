@@ -14,7 +14,7 @@ int main(void)
     char line[MAXLINE]; /* current input line */
 
     while ((len = get_line(line, MAXLINE)) > 0) {
-        if (len == 1 && line[0] == '\n')
+        if (len == 1 && line[0] == '\n' || line[0] == '\t' || line[0] == ' ')
             continue;
         printf("%s\n", line);
     }
