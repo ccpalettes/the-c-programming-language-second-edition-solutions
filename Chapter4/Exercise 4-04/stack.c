@@ -74,11 +74,17 @@ void duplicate(void)
 
 /* swap:  swap the top two elements of the stack */
 void swap(void)
-{
-    double top1 = pop();
-    double top2 = pop();
-    push(top1);
-    push(top2);
+ {
+    double top1;
+    double top2;
+    if (top > 1) {
+        top1 = pop();
+        top2 = pop();
+        push(top1);
+        push(top2);
+    }
+    else
+        printf("erorr: there is only one or no element in stack\n");
 }
 
 /* clear: clear stack */
